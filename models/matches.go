@@ -47,8 +47,6 @@ type MatchPlayer struct {
 	Deaths              int64  `json:"Deaths"`
 	DistanceTraveled    int64  `json:"Distance_Traveled"`
 	FirstBanSide        string `json:"First_Ban_Side"`
-	God                 string `json:"God"`
-	GodID               int64  `json:"GodId"`
 	Gold                int64  `json:"Gold"`
 	Healing             int64  `json:"Healing"`
 	HealingBot          int64  `json:"Healing_Bot"`
@@ -94,42 +92,20 @@ type MatchPlayer struct {
 
 // LiveMatchPlayer stores data related to a Player in a currently Live Match
 type LiveMatchPlayer struct {
-	AccountGodsPlayed int64  `json:"Account_Gods_Played"`
-	AccountLevel      int64  `json:"Account_Level"`
-	GodID             int64  `json:"GodId"`
-	GodLevel          int64  `json:"GodLevel"`
-	GodName           string `json:"GodName"`
-	MasteryLevel      int64  `json:"Mastery_Level"`
-	Match             int64  `json:"Match"`
-	Queue             string `json:"Queue"`
-	RankStat          int64  `json:"Rank_Stat"`
-	SkinID            int64  `json:"SkinId"`
-	Tier              int64  `json:"Tier"`
-	MapGame           string `json:"mapGame"`
-	PlayerCreated     string `json:"playerCreated"`
-	PlayerID          string `json:"playerId"`
-	PlayerName        string `json:"playerName"`
-	PlayerRegion      string `json:"playerRegion"`
-	RetMsg            string `json:"ret_msg"`
-	TaskForce         int64  `json:"taskForce"`
-	TierLosses        int64  `json:"tierLosses"`
-	TierWins          int64  `json:"tierWins"`
-}
-
-// PlayerGodQueueStat stores data related to a Player's stats for a given Queue type
-type PlayerGodQueueStat struct {
-	Assists    int64  `json:"Assists"`
-	Deaths     int64  `json:"Deaths"`
-	God        string `json:"God"`
-	GodID      int64  `json:"GodId"`
-	Gold       int64  `json:"Gold"`
-	Kills      int64  `json:"Kills"`
-	LastPlayed string `json:"LastPlayed"`
-	Losses     int64  `json:"Losses"`
-	Matches    int64  `json:"Matches"`
-	Minutes    int64  `json:"Minutes"`
-	Queue      string `json:"Queue"`
-	Wins       int64  `json:"Wins"`
-	PlayerID   string `json:"player_id"`
-	RetMsg     string `json:"ret_msg"`
+	AccountLevel  int64  `json:"Account_Level"`
+	MasteryLevel  int64  `json:"Mastery_Level"`
+	Match         int64  `json:"Match"`
+	Queue         string `json:"Queue"`
+	RankStat      int64  `json:"Rank_Stat"`
+	SkinID        int64  `json:"SkinId"`
+	Tier          int64  `json:"Tier"`
+	MapGame       string `json:"mapGame"`
+	PlayerCreated string `json:"playerCreated"`
+	PlayerID      string `json:"playerId"`
+	PlayerName    string `json:"playerName"`
+	PlayerRegion  string `json:"playerRegion"`
+	RetMsg        string `json:"ret_msg"`
+	TaskForce     int64  `json:"taskForce"`
+	TierLosses    int64  `json:"tierLosses"`
+	TierWins      int64  `json:"tierWins"`
 }

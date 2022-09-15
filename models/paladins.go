@@ -2,21 +2,11 @@ package models
 
 // Champion stores data related to an in game Champion
 type Champion struct {
-	Ability1               string          `json:"Ability1"`
-	Ability2               string          `json:"Ability2"`
-	Ability3               string          `json:"Ability3"`
-	Ability4               string          `json:"Ability4"`
-	Ability5               string          `json:"Ability5"`
-	AbilityID1             int64           `json:"AbilityId1"`
-	AbilityID2             int64           `json:"AbilityId2"`
-	AbilityID3             int64           `json:"AbilityId3"`
-	AbilityID4             int64           `json:"AbilityId4"`
-	AbilityID5             int64           `json:"AbilityId5"`
-	AbilityOne             ChampionAbility `json:"Ability_1"`
-	AbilityTwo             ChampionAbility `json:"Ability_2"`
-	AbilityThree           ChampionAbility `json:"Ability_3"`
-	AbilityFour            ChampionAbility `json:"Ability_4"`
-	AbilityFive            ChampionAbility `json:"Ability_5"`
+	Ability1               ChampionAbility `json:"Ability_1"`
+	Ability2               ChampionAbility `json:"Ability_2"`
+	Ability3               ChampionAbility `json:"Ability_3"`
+	Ability4               ChampionAbility `json:"Ability_4"`
+	Ability5               ChampionAbility `json:"Ability_5"`
 	ChampionAbility1URL    string          `json:"ChampionAbility1_URL"`
 	ChampionAbility2URL    string          `json:"ChampionAbility2_URL"`
 	ChampionAbility3URL    string          `json:"ChampionAbility3_URL"`
@@ -42,8 +32,8 @@ type Champion struct {
 	AbilityDescription3    string          `json:"abilityDescription3"`
 	AbilityDescription4    string          `json:"abilityDescription4"`
 	AbilityDescription5    string          `json:"abilityDescription5"`
-	ID                     int64           `json:"id"`
-	LatestChamption        string          `json:"latestChampion"`
+	ChampionID             int64           `json:"id"`
+	LatestChampion         string          `json:"latestChampion"`
 	RetMsg                 string          `json:"ret_msg"`
 }
 
@@ -122,7 +112,7 @@ type LoadoutItem struct {
 // PlayerIDInfoForXBOXAndSwitch stores data related to various identifiers for a Player
 type PlayerIDInfoForXBOXAndSwitch struct {
 	Name         string `json:"Name"`
-	Gamertag     string `json:"gamer_tag"`
+	GamerTag     string `json:"gamer_tag"`
 	Platform     string `json:"platform"`
 	PlayerID     string `json:"player_id"`
 	PortalUserID int64  `json:"portal_userid"`
