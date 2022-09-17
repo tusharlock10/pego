@@ -2,7 +2,6 @@ package hirezapi
 
 import (
 	"encoding/json"
-	"fmt"
 	"io"
 
 	"github.com/tusharlock10/pego/models"
@@ -11,23 +10,6 @@ import (
 // GetPlayer returns league and other high level data for a particular player.
 func (a *APIClient) GetPlayer(player string) ([]models.Player, error) {
 	resp, err := a.MakeRequest("getplayer", player)
-	if err != nil {
-		return nil, err
-	}
-	defer resp.Body.Close()
-	body, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-	var output []models.Player
-	err = json.Unmarshal(body, &output)
-	return output, err
-}
-
-// GetPlayerByPlatform returns league and other high level data for a particular player.
-func (a *APIClient) GetPlayerByPlatform(player, portalID string) ([]models.Player, error) {
-	path := fmt.Sprintf("%v/%v", player, portalID)
-	resp, err := a.MakeRequest("getplayer", path)
 	if err != nil {
 		return nil, err
 	}

@@ -13,8 +13,6 @@ type HiRezAPI interface {
 	GetDataUsed() ([]models.DataUsed, error)
 	// GetPlayer returns league and other high level data for a particular player.
 	GetPlayer(player string) ([]models.Player, error)
-	// GetPlayer returns league and other high level data for a particular player.
-	GetPlayerByPlatform(player, portalID string) ([]models.Player, error)
 	// GetFriends returns the player's friends
 	GetFriends(player string) ([]models.Friend, error)
 	// GetMatchHistory returns a list of recent matches and high level match statistics for a particular player
