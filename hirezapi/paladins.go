@@ -6,11 +6,11 @@ import (
 	"io"
 	"strings"
 
-	"github.com/tusharlock10/pego/models"
+	"github.com/tusharlock10/pego/apiResponse"
 )
 
 // GetPlayerBatch returns league and other high level data for a particular list of players. [20 max]
-func (a *APIClient) GetPlayerBatch(playerIDs []string) ([]models.Player, error) {
+func (a *APIClient) GetPlayerBatch(playerIDs []string) ([]apiResponse.Player, error) {
 	if len(playerIDs) > 20 {
 		return nil, fmt.Errorf("per API docs, the list of playerIDs should contain no more than 20")
 	}
@@ -23,13 +23,13 @@ func (a *APIClient) GetPlayerBatch(playerIDs []string) ([]models.Player, error) 
 	if err != nil {
 		return nil, err
 	}
-	var output []models.Player
+	var output []apiResponse.Player
 	err = json.Unmarshal(body, &output)
 	return output, err
 }
 
 // GetChampionRanks returns the rank and worshipper values for each Champion a player has played.
-func (a *APIClient) GetChampionRanks(player string) ([]models.ChampionRank, error) {
+func (a *APIClient) GetChampionRanks(player string) ([]apiResponse.ChampionRank, error) {
 	resp, err := a.MakeRequest("getchampionranks", player)
 	if err != nil {
 		return nil, err
@@ -39,13 +39,13 @@ func (a *APIClient) GetChampionRanks(player string) ([]models.ChampionRank, erro
 	if err != nil {
 		return nil, err
 	}
-	var output []models.ChampionRank
+	var output []apiResponse.ChampionRank
 	err = json.Unmarshal(body, &output)
 	return output, err
 }
 
 // GetChampions returns all Champions and their various attributes.
-func (a *APIClient) GetChampions() ([]models.Champion, error) {
+func (a *APIClient) GetChampions() ([]apiResponse.Champion, error) {
 	resp, err := a.MakeRequest("getchampions", "1")
 	if err != nil {
 		return nil, err
@@ -55,13 +55,13 @@ func (a *APIClient) GetChampions() ([]models.Champion, error) {
 	if err != nil {
 		return nil, err
 	}
-	var output []models.Champion
+	var output []apiResponse.Champion
 	err = json.Unmarshal(body, &output)
 	return output, err
 }
 
 // GetPlayerLoadouts returns deck loadouts per Champion
-func (a *APIClient) GetPlayerLoadouts(player string) ([]models.PlayerLoadout, error) {
+func (a *APIClient) GetPlayerLoadouts(player string) ([]apiResponse.PlayerLoadout, error) {
 	path := fmt.Sprintf("%s/%s", player, "1")
 	resp, err := a.MakeRequest("getplayerloadouts", path)
 	if err != nil {
@@ -72,13 +72,13 @@ func (a *APIClient) GetPlayerLoadouts(player string) ([]models.PlayerLoadout, er
 	if err != nil {
 		return nil, err
 	}
-	var output []models.PlayerLoadout
+	var output []apiResponse.PlayerLoadout
 	err = json.Unmarshal(body, &output)
 	return output, err
 }
 
 // GetChampionCards returns all Champion cards.
-func (a *APIClient) GetChampionCards(champID string) ([]models.ChampionCard, error) {
+func (a *APIClient) GetChampionCards(champID string) ([]apiResponse.ChampionCard, error) {
 	path := fmt.Sprintf("%s/%s", champID, "1")
 	resp, err := a.MakeRequest("getchampioncards", path)
 	if err != nil {
@@ -89,13 +89,13 @@ func (a *APIClient) GetChampionCards(champID string) ([]models.ChampionCard, err
 	if err != nil {
 		return nil, err
 	}
-	var output []models.ChampionCard
+	var output []apiResponse.ChampionCard
 	err = json.Unmarshal(body, &output)
 	return output, err
 }
 
 // GetBountyItems returns daily Bounty Item history for the past 6 months.
-func (a *APIClient) GetBountyItems() ([]models.BountyItem, error) {
+func (a *APIClient) GetBountyItems() ([]apiResponse.BountyItem, error) {
 	resp, err := a.MakeRequest("getbountyitems", "")
 	if err != nil {
 		return nil, err
@@ -105,7 +105,7 @@ func (a *APIClient) GetBountyItems() ([]models.BountyItem, error) {
 	if err != nil {
 		return nil, err
 	}
-	var output []models.BountyItem
+	var output []apiResponse.BountyItem
 	err = json.Unmarshal(body, &output)
 	return output, err
 }

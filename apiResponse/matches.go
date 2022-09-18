@@ -1,4 +1,4 @@
-package models
+package apiResponse
 
 // Match stores data related to an in game Match
 type Match struct {
@@ -90,22 +90,25 @@ type MatchPlayer struct {
 	RetMsg              string `json:"ret_msg"`
 }
 
-// LiveMatchPlayer stores data related to a Player in a currently Live Match
-type LiveMatchPlayer struct {
-	AccountLevel  int64  `json:"Account_Level"`
-	MasteryLevel  int64  `json:"Mastery_Level"`
-	Match         int64  `json:"Match"`
-	Queue         string `json:"Queue"`
-	RankStat      int64  `json:"Rank_Stat"`
-	SkinID        int64  `json:"SkinId"`
-	Tier          int64  `json:"Tier"`
-	MapGame       string `json:"mapGame"`
-	PlayerCreated string `json:"playerCreated"`
-	PlayerID      string `json:"playerId"`
-	PlayerName    string `json:"playerName"`
-	PlayerRegion  string `json:"playerRegion"`
-	RetMsg        string `json:"ret_msg"`
-	TaskForce     int64  `json:"taskForce"`
-	TierLosses    int64  `json:"tierLosses"`
-	TierWins      int64  `json:"tierWins"`
+// ActiveMatchDetail stores data related to a Player in a currently Live Match
+type ActiveMatchDetail struct {
+	AccountChampionsPlayed uint   `json:"Account_Champions_Played"`
+	AccountLevel           uint   `json:"Account_Level"`
+	ChampionID             uint   `json:"ChampionId"`
+	ChampionLevel          uint   `json:"ChampionLevel"`
+	ChampionName           string `json:"ChampionName"`
+	MasteryLevel           uint   `json:"Mastery_Level"`
+	Match                  uint   `json:"Match"`
+	Queue                  uint   `json:"Queue"`
+	Tier                   uint   `json:"Tier"`
+	MapGame                string `json:"mapGame"`
+	PlayerCreated          string `json:"playerCreated"`
+	PlayerID               uint   `json:"playerId"`
+	PlayerName             string `json:"playerName"`
+	PlayerPortalUserID     string `json:"playerPortalUserId"`
+	PlayerRegion           string `json:"playerRegion"`
+	RetMsg                 string `json:"ret_msg"`
+	TaskForce              uint   `json:"taskForce"`
+	TierLosses             uint   `json:"tierLosses"`
+	TierWins               uint   `json:"tierWins"`
 }

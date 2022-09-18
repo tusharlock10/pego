@@ -1,4 +1,4 @@
-package models
+package apiResponse
 
 // Season stores data related to a game Season
 type Season struct {

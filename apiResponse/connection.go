@@ -1,4 +1,4 @@
-package models
+package apiResponse
 
 // Session stores data related to a current HiRezAPI Session.
 type Session struct {

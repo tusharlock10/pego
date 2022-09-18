@@ -18,7 +18,7 @@ package main
 
 import (
   "github.com/tusharlock10/pego/hirezapi"
-  "github.com/tusharlock10/pego/models"
+  "github.com/tusharlock10/pego/apiResponse"
 )
 
 func main() {

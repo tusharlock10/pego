@@ -1,4 +1,4 @@
-package models
+package apiResponse
 
 // Player stores data related to a Player account
 type Player struct {
