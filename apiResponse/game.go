@@ -4,8 +4,8 @@ package apiResponse
 type Item struct {
 	Description       string `json:"Description"`
 	DeviceName        string `json:"DeviceName"`
-	IconId            uint   `json:"IconId"`
-	ItemId            uint   `json:"ItemId"`
+	IconID            uint   `json:"IconId"`
+	ItemID            uint   `json:"ItemId"`
 	Price             uint   `json:"Price"`
 	ShortDesc         string `json:"ShortDesc"`
 	ChampionID        uint   `json:"champion_id"`

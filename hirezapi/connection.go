@@ -27,51 +27,33 @@ func (a *APIClient) CreateSession() error {
 		return fmt.Errorf("error creating session: %v", err)
 	}
 	defer resp.Body.Close()
-	sess := &apiResponse.Session{}
+	session := &apiResponse.Session{}
 	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return fmt.Errorf("error reading response: %v", err)
 	}
-	err = json.Unmarshal(body, sess)
+	err = json.Unmarshal(body, session)
 	if err != nil {
 		return fmt.Errorf("error unmarshaling response: %v", err)
 	}
-	if sess.RetMsg != "Approved" {
-		return fmt.Errorf("error creating session: %v", sess.RetMsg)
+	if session.RetMsg != "Approved" {
+		return fmt.Errorf("error creating session: %v", session.RetMsg)
 	}
-	a.SessionID = sess.SessionID
-	a.SessionStamp = sess.Timestamp
+	a.SessionID = session.SessionID
+	a.SessionStamp = session.Timestamp
 	return nil
 }
 
 // GetHiRezServerStatus returns UP/DOWN status for the primary game/platform environments. Data is cached once a minute.
 func (a *APIClient) GetHiRezServerStatus() ([]apiResponse.HiRezServerStatus, error) {
-	resp, err := a.MakeRequest("gethirezserverstatus", "")
-	if err != nil {
-		return nil, err
-	}
-	defer resp.Body.Close()
-	body, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
 	var output []apiResponse.HiRezServerStatus
-	err = json.Unmarshal(body, &output)
+	err := a.MakeRequest("gethirezserverstatus", "", &output)
 	return output, err
 }
 
 // GetDataUsed returns API Developer daily usage limits and the current status against those limits.
 func (a *APIClient) GetDataUsed() ([]apiResponse.DataUsed, error) {
-	resp, err := a.MakeRequest("getdataused", "")
-	if err != nil {
-		return nil, err
-	}
-	defer resp.Body.Close()
-	body, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
 	var output []apiResponse.DataUsed
-	err = json.Unmarshal(body, &output)
+	err := a.MakeRequest("getdataused", "", &output)
 	return output, err
 }

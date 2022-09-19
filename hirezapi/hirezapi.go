@@ -12,40 +12,40 @@ type HiRezAPI interface {
 	// GetDataUsed returns API Developer daily usage limits and the current status against those limits.
 	GetDataUsed() ([]apiResponse.DataUsed, error)
 	// GetPlayer returns league and other high level data for a particular player.
-	GetPlayer(player string) ([]apiResponse.Player, error)
+	GetPlayer(playerID uint) ([]apiResponse.Player, error)
 	// GetFriends returns the player's friends
-	GetFriends(player string) ([]apiResponse.Friend, error)
-	// GetMatchHistory returns a list of recent matches and high level match statistics for a particular player
-	GetMatchHistory(player string) ([]apiResponse.Match, error)
+	GetFriends(playerID uint) ([]apiResponse.Friend, error)
+	// GetPlayerMatchHistory returns a list of recent matches and high level match statistics for a particular player
+	GetPlayerMatchHistory(playerID uint) ([]apiResponse.PlayerMatchHistory, error)
 	// GetPlayerStatus returns a player status. 0 - offline, 1 - lobby, 2 - champion select, 3 - in game, 4 - online, 5 - unknown
-	GetPlayerStatus(player string) ([]apiResponse.PlayerStatus, error)
+	GetPlayerStatus(playerID uint) ([]apiResponse.PlayerStatus, error)
 	// SearchPlayers returns playerID values for all names and/or gamerTags containing searchPlayer
 	SearchPlayers(searchPlayer string) ([]apiResponse.SearchPlayer, error)
 	// GetItems returns all items and their various attributes.
 	GetItems() ([]apiResponse.Item, error)
 	// GetMatchDetails returns the statistics for a particular completed match.
-	GetMatchDetails(matchID string) ([]apiResponse.MatchPlayer, error)
+	GetMatchDetails(matchID uint) ([]apiResponse.MatchPlayerDetail, error)
 	// GetMatchDetailsBatch returns the statistics for a particular set of completed matches
-	GetMatchDetailsBatch(matchIDs []string) ([]apiResponse.MatchPlayer, error)
+	GetMatchDetailsBatch(matchIDs []uint) ([]apiResponse.MatchPlayerDetail, error)
 	// GetActiveMatchDetails returns player information for a live match.
-	GetActiveMatchDetails(matchID string) ([]apiResponse.ActiveMatchDetail, error)
+	GetActiveMatchDetails(matchID uint) ([]apiResponse.ActiveMatchDetail, error)
 	/*GetMatchIDsByQueue lists all MatchIDs for a particular match queue.
 	- queueID can be referenced by constants defined in this package (eg, hirezapi.LiveSiege).
 	- date must be formatted/formattable by hirezapi.DateFormat (yyyyMMdd).
 	- hour may be "0" - "23" and optionally may contain a ten minute window separated by a comma (eg, "6,30").
 	- hour may also be "-1" to fetch the whole day, but may stall/fail due to the amount of data.
 	*/
-	GetMatchIDsByQueue(queueID, date, hour string) ([]apiResponse.Match, error)
+	GetMatchIDsByQueue(queueID, date, hour string) ([]apiResponse.MatchIdsByQueue, error)
 	// GetPlayerBatch returns league and other high level data for a particular list of players. [20 max]
-	GetPlayerBatch(playerIDs []string) ([]apiResponse.Player, error)
+	GetPlayerBatch(playerIDs []uint) ([]apiResponse.Player, error)
 	// GetChampionRanks returns the rank and worshipper values for each Champion a player has played.
-	GetChampionRanks(player string) ([]apiResponse.ChampionRank, error)
+	GetChampionRanks(playerID uint) ([]apiResponse.ChampionRank, error)
 	// GetChampions returns all Champions and their various attributes.
 	GetChampions() ([]apiResponse.Champion, error)
 	// GetPlayerLoadouts returns deck loadouts per Champion
-	GetPlayerLoadouts(player string) ([]apiResponse.PlayerLoadout, error)
+	GetPlayerLoadouts(playerID uint) ([]apiResponse.PlayerLoadout, error)
 	// GetChampionCards returns all Champion cards
-	GetChampionCards(champID string) ([]apiResponse.ChampionCard, error)
+	GetChampionCards(championID uint) ([]apiResponse.ChampionCard, error)
 	// GetBountyItems returns daily Bounty Item history for the past 6 months.
 	GetBountyItems() ([]apiResponse.BountyItem, error)
 }

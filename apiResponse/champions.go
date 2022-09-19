@@ -3,7 +3,7 @@ package apiResponse
 // ChampionAbility stores data related to a Champion Ability
 type ChampionAbility struct {
 	Description     string `json:"Description"`
-	ID              uint   `json:"Id"`
+	AbilityID       uint   `json:"Id"`
 	Summary         string `json:"Summary"`
 	URL             string `json:"URL"`
 	DamageType      string `json:"damageType"`

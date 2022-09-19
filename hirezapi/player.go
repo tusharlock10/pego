@@ -1,88 +1,49 @@
 package hirezapi
 
 import (
-	"encoding/json"
-	"io"
+	"fmt"
 
 	"github.com/tusharlock10/pego/apiResponse"
 )
 
 // GetPlayer returns league and other high level data for a particular player.
-func (a *APIClient) GetPlayer(player string) ([]apiResponse.Player, error) {
-	resp, err := a.MakeRequest("getplayer", player)
-	if err != nil {
-		return nil, err
-	}
-	defer resp.Body.Close()
-	body, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
+func (a *APIClient) GetPlayer(playerID uint) ([]apiResponse.Player, error) {
 	var output []apiResponse.Player
-	err = json.Unmarshal(body, &output)
+	err := a.MakeRequest("getplayer", fmt.Sprint(playerID), &output)
 	return output, err
 }
 
 // GetFriends returns Smite Usernames of each of the player's friends. [PC Only]
-func (a *APIClient) GetFriends(player string) ([]apiResponse.Friend, error) {
-	resp, err := a.MakeRequest("getfriends", player)
-	if err != nil {
-		return nil, err
-	}
-	defer resp.Body.Close()
-	body, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
+func (a *APIClient) GetFriends(playerID uint) ([]apiResponse.Friend, error) {
 	var output []apiResponse.Friend
-	err = json.Unmarshal(body, &output)
+	err := a.MakeRequest("getfriends", fmt.Sprint(playerID), &output)
 	return output, err
 }
 
-// GetMatchHistory returns a list of recent matches and high level match statistics for a particular player
-func (a *APIClient) GetMatchHistory(player string) ([]apiResponse.Match, error) {
-	resp, err := a.MakeRequest("getmatchhistory", player)
-	if err != nil {
-		return nil, err
-	}
-	defer resp.Body.Close()
-	body, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-	var output []apiResponse.Match
-	err = json.Unmarshal(body, &output)
+// GetPlayerMatchHistory returns a list of recent matches and high level match statistics for a particular player
+func (a *APIClient) GetPlayerMatchHistory(playerID uint) ([]apiResponse.PlayerMatchHistory, error) {
+	var output []apiResponse.PlayerMatchHistory
+	err := a.MakeRequest("getmatchhistory", fmt.Sprint(playerID), &output)
 	return output, err
 }
 
 // GetPlayerStatus returns a player status.
-func (a *APIClient) GetPlayerStatus(player string) ([]apiResponse.PlayerStatus, error) {
-	resp, err := a.MakeRequest("getplayerstatus", player)
-	if err != nil {
-		return nil, err
-	}
-	defer resp.Body.Close()
-	body, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
+func (a *APIClient) GetPlayerStatus(playerID uint) ([]apiResponse.PlayerStatus, error) {
 	var output []apiResponse.PlayerStatus
-	err = json.Unmarshal(body, &output)
+	err := a.MakeRequest("getplayerstatus", fmt.Sprint(playerID), &output)
+	return output, err
+}
+
+// GetPlayerQueueStats returns a queue player stats of a player.
+func (a *APIClient) GetPlayerQueueStats(playerID uint) ([]apiResponse.PlayerQueueStat, error) {
+	var output []apiResponse.PlayerQueueStat
+	err := a.MakeRequest("getqueuestats", fmt.Sprint(playerID), &output)
 	return output, err
 }
 
 // SearchPlayers returns playerID values for all names and/or gamerTags containing searchPlayer
 func (a *APIClient) SearchPlayers(searchPlayer string) ([]apiResponse.SearchPlayer, error) {
-	resp, err := a.MakeRequest("searchplayers", searchPlayer)
-	if err != nil {
-		return nil, err
-	}
-	defer resp.Body.Close()
-	body, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
 	var output []apiResponse.SearchPlayer
-	err = json.Unmarshal(body, &output)
+	err := a.MakeRequest("searchplayers", searchPlayer, &output)
 	return output, err
 }

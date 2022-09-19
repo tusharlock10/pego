@@ -1,53 +1,52 @@
 package apiResponse
 
 // Player stores data related to a Player account
+type Ranked struct {
+	Leaves   uint   `json:"Leaves"`
+	Losses   uint   `json:"Losses"`
+	Name     string `json:"Name"`
+	Points   uint   `json:"Points"`
+	PrevRank uint   `json:"PrevRank"`
+	Rank     uint   `json:"Rank"`
+	Season   uint   `json:"Season"`
+	Tier     uint   `json:"Tier"`
+	Trend    uint   `json:"Trend"`
+	Wins     uint   `json:"Wins"`
+}
+
 type Player struct {
-	ActivePlayerID               int64            `json:"ActivePlayerId"`
-	AvatarID                     int64            `json:"AvatarID"`
-	AvatarURL                    string           `json:"Avatar_URL"`
-	CreatedDatetime              string           `json:"Created_Datetime"`
-	HoursPlayed                  int64            `json:"HoursPlayed"`
-	ID                           int64            `json:"Id"`
-	LastLoginDatetime            string           `json:"Last_Login_Datetime"`
-	Leaves                       int64            `json:"Leaves"`
-	Level                        int64            `json:"Level"`
-	LoadingFrame                 string           `json:"LoadingFrame"`
-	Losses                       int64            `json:"Losses"`
-	MasteryLevel                 int              `json:"MasteryLevel"`
-	MergedPlayers                []MergedPlayer   `json:"MergedPlayers"`
-	MinutesPlayed                int64            `json:"MinutesPlayed"`
-	Name                         string           `json:"Name"`
-	PersonalStatusMessage        string           `json:"Personal_Status_Message"`
-	Platform                     string           `json:"Platform"`
-	RankedStatConquest           float32          `json:"Rank_Stat_Conquest"`
-	RankedStatConquestController float32          `json:"Rank_Stat_Conquest_Controller"`
-	RankedStatDuel               float32          `json:"Rank_Stat_Duel"`
-	RankedStatDuelController     float32          `json:"Rank_Stat_Duel_Controller"`
-	RankedStatJoust              float32          `json:"Rank_Stat_Joust"`
-	RankedStatJoustController    float32          `json:"Rank_Stat_Joust_Controller"`
-	RankedConquest               PlayerRankedInfo `json:"RankedConquest"`
-	RankedConquestController     PlayerRankedInfo `json:"RankedConquestController"`
-	RankedDuel                   PlayerRankedInfo `json:"RankedDuel"`
-	RankedDuelController         PlayerRankedInfo `json:"RankedDuelController"`
-	RankedJoust                  PlayerRankedInfo `json:"RankedJoust"`
-	RankedJoustController        PlayerRankedInfo `json:"RankedJoustController"`
-	RankedKBM                    PlayerRankedInfo `json:"RankedKBM"`
-	Region                       string           `json:"Region"`
-	TeamID                       int64            `json:"TeamId"`
-	TeamName                     string           `json:"Team_Name"`
-	TierConquest                 int              `json:"Tier_Conquest"`
-	TierDuel                     int              `json:"Tier_Duel"`
-	TierJoust                    int              `json:"Tier_Joust"`
-	TierRankedController         int              `json:"Tier_RankedController"`
-	TierRankedKBM                int              `json:"Tier_RankedKBM"`
-	Title                        string           `json:"Title"`
-	TotalAchievements            int64            `json:"Total_Achievements"`
-	TotalWorshippers             int64            `json:"Total_Worshippers"`
-	TotalXP                      int64            `json:"Total_XP"`
-	Wins                         int64            `json:"Wins"`
-	HZGamerTag                   string           `json:"hz_gamer_tag"`
-	HZPlayerName                 string           `json:"hz_player_name"`
-	RetMsg                       string           `json:"ret_msg"`
+	ActivePlayerID        uint   `json:"ActivePlayerId"`
+	AvatarID              uint   `json:"AvatarId"`
+	AvatarURL             string `json:"AvatarURL"`
+	CreatedDatetime       string `json:"Created_Datetime"`
+	HoursPlayed           uint   `json:"HoursPlayed"`
+	PlayerID              uint   `json:"Id"`
+	LastLoginDatetime     string `json:"Last_Login_Datetime"`
+	Leaves                uint   `json:"Leaves"`
+	Level                 uint   `json:"Level"`
+	LoadingFrame          string `json:"LoadingFrame"`
+	Losses                uint   `json:"Losses"`
+	MasteryLevel          uint   `json:"MasteryLevel"`
+	MinutesPlayed         uint   `json:"MinutesPlayed"`
+	Name                  string `json:"Name"`
+	PersonalStatusMessage string `json:"Personal_Status_Message"`
+	Platform              string `json:"Platform"`
+	RankedConquest        Ranked `json:"RankedConquest"`
+	RankedController      Ranked `json:"RankedController"`
+	RankedKBM             Ranked `json:"RankedKBM"`
+	Region                string `json:"Region"`
+	TeamID                uint   `json:"TeamId"`
+	TeamName              string `json:"Team_Name"`
+	TierConquest          uint   `json:"Tier_Conquest"`
+	TierRankedController  uint   `json:"Tier_RankedController"`
+	TierRankedKBM         uint   `json:"Tier_RankedKBM"`
+	Title                 string `json:"Title"`
+	TotalAchievements     uint   `json:"Total_Achievements"`
+	TotalWorshippers      uint   `json:"Total_Worshippers"`
+	TotalXP               uint   `json:"Total_XP"`
+	Wins                  uint   `json:"Wins"`
+	HirezPlayerName       string `json:"hz_player_name"`
+	RetMsg                string `json:"ret_msg"`
 }
 
 // MergedPlayer stores data related to merged identites of the same Player on different Platforms
@@ -67,42 +66,41 @@ type SearchPlayer struct {
 	RetMsg       string `json:"ret_msg"`
 }
 
-// PlayerRankedInfo stores data related to Ranked Info for a Player
-type PlayerRankedInfo struct {
-	Leaves       int64   `json:"Leaves"`
-	Losses       int64   `json:"Losses"`
-	Name         string  `json:"Name"`
-	Points       int64   `json:"Points"`
-	PrevRank     int64   `json:"PrevRank"`
-	Rank         int64   `json:"Rank"`
-	RankStat     float32 `json:"Rank_Stat"`
-	RankVariance int64   `json:"Rank_Variance"`
-	Season       int64   `json:"Season"`
-	Tier         int64   `json:"Tier"`
-	Trend        int64   `json:"Trend"`
-	Wins         int64   `json:"Wins"`
-	PlayerID     string  `json:"player_id"`
-	RetMsg       string  `json:"ret_msg"`
-}
-
 // Friend stores data related to a Player's Friend
 type Friend struct {
 	AccountID   string `json:"account_id"`
-	AvatarURL   string `json:"avatar_url"`
 	FriendFlags string `json:"friend_flags"`
 	Name        string `json:"name"`
 	PlayerID    string `json:"player_id"`
-	PortalID    string `json:"portal_id"`
+	PortalID    uint   `json:"portal_id"`
 	RetMsg      string `json:"ret_msg"`
 	Status      string `json:"status"`
 }
 
 // PlayerStatus stores data related to a Players current Status
 type PlayerStatus struct {
-	Match                 int64  `json:"Match"`
-	MatchQueueID          int64  `json:"match_queue_id"`
+	Match                 uint   `json:"Match"`
+	MatchQueueID          uint   `json:"match_queue_id"`
 	PersonalStatusMessage string `json:"personal_status_message"`
 	RetMsg                string `json:"ret_msg"`
-	Status                int    `json:"status"`
+	Status                uint   `json:"status"`
 	StatusString          string `json:"status_string"`
+}
+
+// PlayerStatus stores data related to a Players current Status
+type PlayerQueueStat struct {
+	Assists    uint   `json:"Assists"`
+	Champion   string `json:"Champion"`
+	ChampionID uint   `json:"ChampionId"`
+	Deaths     uint   `json:"Deaths"`
+	Gold       uint   `json:"Gold"`
+	Kills      uint   `json:"Kills"`
+	LastPlayed string `json:"LastPlayed"`
+	Losses     uint   `json:"Losses"`
+	Matches    uint   `json:"Matches"`
+	Minutes    uint   `json:"Minutes"`
+	Queue      string `json:"Queue"`
+	Wins       uint   `json:"Wins"`
+	PlayerID   string `json:"player_id"`
+	RetMsg     string `json:"ret_msg"`
 }

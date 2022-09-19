@@ -1,62 +1,37 @@
 package hirezapi
 
 import (
-	"encoding/json"
 	"fmt"
-	"io"
-	"strings"
 
 	"github.com/tusharlock10/pego/apiResponse"
 )
 
 // GetMatchDetails returns the statistics for a particular completed match.
-func (a *APIClient) GetMatchDetails(matchID string) ([]apiResponse.MatchPlayer, error) {
-	resp, err := a.MakeRequest("getmatchdetails", matchID)
-	if err != nil {
-		return nil, err
-	}
-	defer resp.Body.Close()
-	body, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-	var output []apiResponse.MatchPlayer
-	err = json.Unmarshal(body, &output)
+func (a *APIClient) GetMatchDetails(matchID uint) ([]apiResponse.MatchPlayerDetail, error) {
+	var output []apiResponse.MatchPlayerDetail
+	err := a.MakeRequest("getmatchdetails", fmt.Sprint(matchID), &output)
 	return output, err
 }
 
-// GetMatchDetailsBatch returns the statistics for a particular set of completed matches. (limit batch query to 5-10 matchIDs)
-func (a *APIClient) GetMatchDetailsBatch(matchIDs []string) ([]apiResponse.MatchPlayer, error) {
-	if len(matchIDs) > 10 {
-		return nil, fmt.Errorf("per API docs, the list of matchIDs should contain no more than 10")
+// GetMatchDetailsBatch returns the statistics for a particular set of completed matches
+func (a *APIClient) GetMatchDetailsBatch(matchIDs []uint) ([]apiResponse.MatchPlayerDetail, error) {
+	joinedMatchIDs := ""
+	for i, matchID := range matchIDs {
+		separator := ","
+		if i == 0 {
+			separator = ""
+		}
+		joinedMatchIDs = joinedMatchIDs + separator + fmt.Sprint(matchID)
 	}
-	resp, err := a.MakeRequest("getmatchdetailsbatch", strings.Join(matchIDs, ","))
-	if err != nil {
-		return nil, err
-	}
-	defer resp.Body.Close()
-	body, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-	var output []apiResponse.MatchPlayer
-	err = json.Unmarshal(body, &output)
+	var output []apiResponse.MatchPlayerDetail
+	err := a.MakeRequest("getmatchdetailsbatch", joinedMatchIDs, &output)
 	return output, err
 }
 
-// GetActiveMatchDetails returns player information for a live match.
-func (a *APIClient) GetActiveMatchDetails(activeMatchID string) ([]apiResponse.ActiveMatchDetail, error) {
-	resp, err := a.MakeRequest("GetActiveMatchDetails", activeMatchID)
-	if err != nil {
-		return nil, err
-	}
-	defer resp.Body.Close()
-	body, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
+// GetActiveMatchDetails returns player information for an active match.
+func (a *APIClient) GetActiveMatchDetails(matchID uint) ([]apiResponse.ActiveMatchDetail, error) {
 	var output []apiResponse.ActiveMatchDetail
-	err = json.Unmarshal(body, &output)
+	err := a.MakeRequest("getmatchplayerdetails", fmt.Sprint(matchID), &output)
 	return output, err
 }
 
@@ -67,18 +42,9 @@ GetMatchIDsByQueue lists all MatchIDs for a particular match queue.
 - hour may be "0" - "23" and optionally may contain a ten minute window separated by a comma (eg, "6,30").
 - hour may also be "-1" to fetch the whole day, but may stall/fail due to the amount of data.
 */
-func (a *APIClient) GetMatchIDsByQueue(queueID, date, hour string) ([]apiResponse.Match, error) {
+func (a *APIClient) GetMatchIDsByQueue(queueID, date, hour string) ([]apiResponse.MatchIdsByQueue, error) {
+	var output []apiResponse.MatchIdsByQueue
 	path := fmt.Sprintf("%s/%s/%s", queueID, date, hour)
-	resp, err := a.MakeRequest("getmatchidsbyqueue", path)
-	if err != nil {
-		return nil, err
-	}
-	defer resp.Body.Close()
-	body, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-	var output []apiResponse.Match
-	err = json.Unmarshal(body, &output)
+	err := a.MakeRequest("getmatchidsbyqueue", path, &output)
 	return output, err
 }

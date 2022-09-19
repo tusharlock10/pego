@@ -2,8 +2,10 @@ package hirezapi
 
 import (
 	"crypto/md5"
+	"encoding/json"
 	"errors"
 	"fmt"
+	"io"
 	"net/http"
 	"time"
 
@@ -37,13 +39,29 @@ func Init(devID, key string) (HiRezAPI, error) {
 	return api, nil
 }
 
-func (a *APIClient) MakeRequest(methodName, path string) (*http.Response, error) {
+func (a *APIClient) MakeRequest(methodName, path string, output interface{}) error {
 	signature, timestamp := a.GenerateSignature(methodName)
 	apiURL := fmt.Sprintf("%s/%s%s/%s/%s/%s/%s", constants.PaladinsURL, methodName, "json", a.DeveloperID, signature, a.SessionID, timestamp)
 	if path != "" {
 		apiURL = fmt.Sprintf("%s/%s", apiURL, path)
 	}
-	return http.Get(apiURL)
+	resp, err := http.Get(apiURL)
+	if err != nil {
+		return err
+	}
+
+	defer resp.Body.Close()
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return err
+	}
+
+	err = json.Unmarshal(body, &output)
+	if err != nil {
+		return err
+	}
+
+	return nil
 }
 
 // GenerateSignature takes in the requested methodName and generates an md5 hashed signature for sending a request

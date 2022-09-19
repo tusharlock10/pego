@@ -20,12 +20,12 @@ type HiRezServerStatus struct {
 
 // DataUsed stores data related to how many requests and sessions have been used of the daily cap.
 type DataUsed struct {
-	ActiveSessions     int    `json:"Active_Sessions"`
-	ConcurrentSessions int    `json:"Concurrent_Sessions"`
-	RequestDailyLimit  int    `json:"Request_Limit_Daily"`
-	SessionCap         int    `json:"Session_Cap"`
-	SessionTimeLimit   int    `json:"Session_Time_Limit"`
-	TotalRequestsToday int    `json:"Total_Requests_Today"`
-	TotalSessionsToday int    `json:"Total_Sessions_Today"`
+	ActiveSessions     uint   `json:"Active_Sessions"`
+	ConcurrentSessions uint   `json:"Concurrent_Sessions"`
+	RequestDailyLimit  uint   `json:"Request_Limit_Daily"`
+	SessionCap         uint   `json:"Session_Cap"`
+	SessionTimeLimit   uint   `json:"Session_Time_Limit"`
+	TotalRequestsToday uint   `json:"Total_Requests_Today"`
+	TotalSessionsToday uint   `json:"Total_Sessions_Today"`
 	RetMsg             string `json:"ret_msg"`
 }
