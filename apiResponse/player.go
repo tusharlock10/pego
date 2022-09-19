@@ -31,15 +31,9 @@ type Player struct {
 	Name                  string `json:"Name"`
 	PersonalStatusMessage string `json:"Personal_Status_Message"`
 	Platform              string `json:"Platform"`
-	RankedConquest        Ranked `json:"RankedConquest"`
 	RankedController      Ranked `json:"RankedController"`
 	RankedKBM             Ranked `json:"RankedKBM"`
 	Region                string `json:"Region"`
-	TeamID                uint   `json:"TeamId"`
-	TeamName              string `json:"Team_Name"`
-	TierConquest          uint   `json:"Tier_Conquest"`
-	TierRankedController  uint   `json:"Tier_RankedController"`
-	TierRankedKBM         uint   `json:"Tier_RankedKBM"`
 	Title                 string `json:"Title"`
 	TotalAchievements     uint   `json:"Total_Achievements"`
 	TotalWorshippers      uint   `json:"Total_Worshippers"`
@@ -72,7 +66,7 @@ type Friend struct {
 	FriendFlags string `json:"friend_flags"`
 	Name        string `json:"name"`
 	PlayerID    string `json:"player_id"`
-	PortalID    uint   `json:"portal_id"`
+	PortalID    uint   `json:"portal_id,string"`
 	RetMsg      string `json:"ret_msg"`
 	Status      string `json:"status"`
 }

@@ -19,13 +19,13 @@ type ChampionCard struct {
 	CardID2                      uint   `json:"card_id2"`
 	CardName                     string `json:"card_name"`
 	CardNameEnglish              string `json:"card_name_english"`
-	ChampionCardURL              string `json:"championCard_URL"`
 	ChampionCardIconURL          string `json:"championIcon_URL"`
 	ChampionTalentURL            string `json:"championTalent_URL"`
 	ChampionID                   uint   `json:"champion_id"`
 	ChampionName                 string `json:"champion_name"`
 	Exclusive                    string `json:"exclusive"`
 	Rank                         uint   `json:"rank"`
+	Rarity                       string `json:"rarity"`
 	RechargeSeconds              uint   `json:"recharge_seconds"`
 	RetMsg                       string `json:"ret_msg"`
 }
@@ -44,19 +44,15 @@ type Champion struct {
 	ChampionAbility5URL    string          `json:"ChampionAbility5_URL"`
 	ChampionAbilityCardURL string          `json:"ChampionCard_URL"`
 	ChampionAbilityIconURL string          `json:"ChampionIcon_URL"`
-	Cons                   string          `json:"Cons"`
 	Health                 uint            `json:"Health"`
 	Lore                   string          `json:"Lore"`
 	Name                   string          `json:"Name"`
 	NameEnglish            string          `json:"Name_English"`
 	OnFreeRotation         string          `json:"OnFreeRotation"`
 	OnFreeWeeklyRotation   string          `json:"OnFreeWeeklyRotation"`
-	Pantheon               string          `json:"Pantheon"`
-	Pros                   string          `json:"Pros"`
 	Roles                  string          `json:"Roles"`
 	Speed                  uint            `json:"Speed"`
 	Title                  string          `json:"Title"`
-	Type                   string          `json:"Type"`
 	AbilityDescription1    string          `json:"abilityDescription1"`
 	AbilityDescription2    string          `json:"abilityDescription2"`
 	AbilityDescription3    string          `json:"abilityDescription3"`

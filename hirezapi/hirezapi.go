@@ -30,12 +30,12 @@ type HiRezAPI interface {
 	// GetActiveMatchDetails returns player information for a live match.
 	GetActiveMatchDetails(matchID uint) ([]apiResponse.ActiveMatchDetail, error)
 	/*GetMatchIDsByQueue lists all MatchIDs for a particular match queue.
-	- queueID can be referenced by constants defined in this package (eg, hirezapi.LiveSiege).
+	- queueID can be referenced by constants
 	- date must be formatted/formattable by hirezapi.DateFormat (yyyyMMdd).
 	- hour may be "0" - "23" and optionally may contain a ten minute window separated by a comma (eg, "6,30").
 	- hour may also be "-1" to fetch the whole day, but may stall/fail due to the amount of data.
 	*/
-	GetMatchIDsByQueue(queueID, date, hour string) ([]apiResponse.MatchIdsByQueue, error)
+	GetMatchIDsByQueue(queueID uint, date, hour string) ([]apiResponse.MatchIdsByQueue, error)
 	// GetPlayerBatch returns league and other high level data for a particular list of players. [20 max]
 	GetPlayerBatch(playerIDs []uint) ([]apiResponse.Player, error)
 	// GetChampionRanks returns the rank and worshipper values for each Champion a player has played.

@@ -37,14 +37,14 @@ func (a *APIClient) GetActiveMatchDetails(matchID uint) ([]apiResponse.ActiveMat
 
 /*
 GetMatchIDsByQueue lists all MatchIDs for a particular match queue.
-- queueID can be referened by constants defined in this package (eg, hirezapi.ConquestRanked).
+- queueID can be referened by constants
 - date must be formatted/formattable by hirezapi.DateFormat (yyyyMMdd).
 - hour may be "0" - "23" and optionally may contain a ten minute window separated by a comma (eg, "6,30").
 - hour may also be "-1" to fetch the whole day, but may stall/fail due to the amount of data.
 */
-func (a *APIClient) GetMatchIDsByQueue(queueID, date, hour string) ([]apiResponse.MatchIdsByQueue, error) {
+func (a *APIClient) GetMatchIDsByQueue(queueID uint, date, hour string) ([]apiResponse.MatchIdsByQueue, error) {
 	var output []apiResponse.MatchIdsByQueue
-	path := fmt.Sprintf("%s/%s/%s", queueID, date, hour)
+	path := fmt.Sprintf("%s/%s/%s", fmt.Sprint(queueID), date, hour)
 	err := a.MakeRequest("getmatchidsbyqueue", path, &output)
 	return output, err
 }
