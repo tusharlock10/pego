@@ -94,7 +94,7 @@ type MatchDetail struct {
 	Name                string `json:"name"`
 	PlayerID            string `json:"playerId"`
 	PlayerName          string `json:"playerName"`
-	PlayerPortalID      uint   `json:"playerPortalId"`
+	PlayerPortalID      uint   `json:"playerPortalId,string"`
 	PlayerPortalUserID  string `json:"playerPortalUserId"`
 	RetMsg              string `json:"ret_msg"`
 }
