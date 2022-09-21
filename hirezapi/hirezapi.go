@@ -24,9 +24,9 @@ type HiRezAPI interface {
 	// GetItems returns all items and their various attributes.
 	GetItems() ([]apiResponse.Item, error)
 	// GetMatchDetails returns the statistics for a particular completed match.
-	GetMatchDetails(matchID uint) ([]apiResponse.MatchPlayerDetail, error)
+	GetMatchDetails(matchID uint) ([]apiResponse.MatchDetail, error)
 	// GetMatchDetailsBatch returns the statistics for a particular set of completed matches
-	GetMatchDetailsBatch(matchIDs []uint) ([]apiResponse.MatchPlayerDetail, error)
+	GetMatchDetailsBatch(matchIDs []uint) ([]apiResponse.MatchDetail, error)
 	// GetActiveMatchDetails returns player information for a live match.
 	GetActiveMatchDetails(matchID uint) ([]apiResponse.ActiveMatchDetail, error)
 	/*GetMatchIDsByQueue lists all MatchIDs for a particular match queue.

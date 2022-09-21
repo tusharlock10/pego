@@ -13,6 +13,7 @@ const (
 	HiRez, Steam, PS4, XBOX, Switch, Discord, Epic = 1, 5, 9, 10, 22, 25, 28
 
 	// League Tiers
+	Qualifying                                            = 0
 	Bronze5, Bronze4, Bronze3, Bronze2, Bronze1           = 1, 2, 3, 4, 5
 	Silver5, Silver4, Silver3, Silver2, Silver1           = 6, 7, 8, 9, 10
 	Gold5, Gold4, Gold3, Gold2, Gold1                     = 11, 12, 13, 14, 15

@@ -9,8 +9,8 @@ type MatchIdsByQueue struct {
 	RetMsg        string `json:"ret_msg"`
 }
 
-// MatchPlayerDetail stores data related to a Player present in a Match
-type MatchPlayerDetail struct {
+// MatchDetail stores data related to a Match
+type MatchDetail struct {
 	AccountLevel        uint   `json:"Account_Level"`
 	ActiveID1           uint   `json:"ActiveId1"`
 	ActiveID2           uint   `json:"ActiveId2"`

@@ -7,14 +7,14 @@ import (
 )
 
 // GetMatchDetails returns the statistics for a particular completed match.
-func (a *APIClient) GetMatchDetails(matchID uint) ([]apiResponse.MatchPlayerDetail, error) {
-	var output []apiResponse.MatchPlayerDetail
+func (a *APIClient) GetMatchDetails(matchID uint) ([]apiResponse.MatchDetail, error) {
+	var output []apiResponse.MatchDetail
 	err := a.MakeRequest("getmatchdetails", fmt.Sprint(matchID), &output)
 	return output, err
 }
 
 // GetMatchDetailsBatch returns the statistics for a particular set of completed matches
-func (a *APIClient) GetMatchDetailsBatch(matchIDs []uint) ([]apiResponse.MatchPlayerDetail, error) {
+func (a *APIClient) GetMatchDetailsBatch(matchIDs []uint) ([]apiResponse.MatchDetail, error) {
 	joinedMatchIDs := ""
 	for i, matchID := range matchIDs {
 		separator := ","
@@ -23,7 +23,7 @@ func (a *APIClient) GetMatchDetailsBatch(matchIDs []uint) ([]apiResponse.MatchPl
 		}
 		joinedMatchIDs = joinedMatchIDs + separator + fmt.Sprint(matchID)
 	}
-	var output []apiResponse.MatchPlayerDetail
+	var output []apiResponse.MatchDetail
 	err := a.MakeRequest("getmatchdetailsbatch", joinedMatchIDs, &output)
 	return output, err
 }
