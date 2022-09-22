@@ -53,18 +53,9 @@ type MatchDetail struct {
 	ItemLevel4          uint   `json:"ItemLevel4"`
 	ItemLevel5          uint   `json:"ItemLevel5"`
 	ItemLevel6          uint   `json:"ItemLevel6"`
-	ItemActive1         string `json:"Item_Active_1"`
-	ItemActive2         string `json:"Item_Active_2"`
-	ItemActive3         string `json:"Item_Active_3"`
-	ItemActive4         string `json:"Item_Active_4"`
-	ItemPurch1          string `json:"Item_Purch_1"`
-	ItemPurch2          string `json:"Item_Purch_2"`
-	ItemPurch3          string `json:"Item_Purch_3"`
-	ItemPurch4          string `json:"Item_Purch_4"`
-	ItemPurch5          string `json:"Item_Purch_5"`
-	ItemPurch6          string `json:"Item_Purch_6"`
 	KillingSpree        uint   `json:"Killing_Spree"`
 	KillsBot            uint   `json:"Kills_Bot"`
+	KillsPlayer         uint   `json:"Kills_Player"`
 	LeagueLosses        uint   `json:"League_Losses"`
 	LeaguePoints        uint   `json:"League_Points"`
 	LeagueTier          uint   `json:"League_Tier"`
@@ -158,13 +149,7 @@ type PlayerMatchHistory struct {
 	ItemLevel4          uint   `json:"ItemLevel4"`
 	ItemLevel5          uint   `json:"ItemLevel5"`
 	ItemLevel6          uint   `json:"ItemLevel6"`
-	Item1               string `json:"Item_1"`
-	Item2               string `json:"Item_2"`
-	Item3               string `json:"Item_3"`
-	Item4               string `json:"Item_4"`
-	Item5               string `json:"Item_5"`
-	Item6               string `json:"Item_6"`
-	Killing_Spree       uint   `json:"Killing_Spree"`
+	KillingSpree        uint   `json:"Killing_Spree"`
 	Kills               uint   `json:"Kills"`
 	Level               uint   `json:"Level"`
 	MapGame             string `json:"Map_Game"`
