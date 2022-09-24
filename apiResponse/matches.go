@@ -74,8 +74,8 @@ type MatchDetail struct {
 	Skin                string `json:"Skin"`
 	SkinID              uint   `json:"SkinId"`
 	TaskForce           uint   `json:"TaskForce"`
-	Team1Score          uint   `json:"Team1Score"`
-	Team2Score          uint   `json:"Team2Score"`
+	Team1Score          int    `json:"Team1Score"`
+	Team2Score          int    `json:"Team2Score"`
 	TeamID              uint   `json:"TeamId"`
 	TimeInMatchSeconds  uint   `json:"Time_In_Match_Seconds"`
 	WinStatus           string `json:"Win_Status"`
@@ -164,8 +164,8 @@ type PlayerMatchHistory struct {
 	Skin                string `json:"Skin"`
 	SkinID              uint   `json:"SkinId"`
 	TaskForce           uint   `json:"TaskForce"`
-	Team1Score          uint   `json:"Team1Score"`
-	Team2Score          uint   `json:"Team2Score"`
+	Team1Score          int    `json:"Team1Score"`
+	Team2Score          int    `json:"Team2Score"`
 	TimeInMatchSeconds  uint   `json:"Time_In_Match_Seconds"`
 	WardsPlaced         uint   `json:"Wards_Placed"`
 	WinStatus           string `json:"Win_Status"`
