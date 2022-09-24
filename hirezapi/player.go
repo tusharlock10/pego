@@ -34,13 +34,6 @@ func (a *APIClient) GetPlayerStatus(playerID uint) ([]apiResponse.PlayerStatus, 
 	return output, err
 }
 
-// GetPlayerQueueStats returns a queue player stats of a player.
-func (a *APIClient) GetPlayerQueueStats(playerID uint) ([]apiResponse.PlayerQueueStat, error) {
-	var output []apiResponse.PlayerQueueStat
-	err := a.MakeRequest("getqueuestats", fmt.Sprint(playerID), &output)
-	return output, err
-}
-
 // SearchPlayers returns playerID values for all names and/or gamerTags containing searchPlayer
 func (a *APIClient) SearchPlayers(searchPlayer string) ([]apiResponse.SearchPlayer, error) {
 	var output []apiResponse.SearchPlayer

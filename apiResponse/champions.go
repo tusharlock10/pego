@@ -77,7 +77,7 @@ type ChampionRank struct {
 	Wins        uint   `json:"Wins"`
 	Worshippers uint   `json:"Worshippers"`
 	Champion    string `json:"champion"`
-	ChampionID  string `json:"champion_id"`
-	PlayerID    string `json:"player_id"`
+	ChampionID  uint   `json:"champion_id,string"`
+	PlayerID    uint   `json:"player_id,string"`
 	RetMsg      string `json:"ret_msg"`
 }

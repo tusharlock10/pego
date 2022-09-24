@@ -20,7 +20,7 @@ type MatchDetail struct {
 	ActiveLevel2        uint   `json:"ActiveLevel2"`
 	ActiveLevel3        uint   `json:"ActiveLevel3"`
 	ActiveLevel4        uint   `json:"ActiveLevel4"`
-	ActivePlayerID      string `json:"ActivePlayerId"`
+	ActivePlayerID      uint   `json:"ActivePlayerId,string"`
 	Assists             uint   `json:"Assists"`
 	BanID1              uint   `json:"BanId1"`
 	BanID2              uint   `json:"BanId2"`
@@ -83,10 +83,10 @@ type MatchDetail struct {
 	HasReplay           string `json:"hasReplay"`
 	MatchQueueID        uint   `json:"match_queue_id"`
 	Name                string `json:"name"`
-	PlayerID            string `json:"playerId"`
+	PlayerID            uint   `json:"playerId,string"`
 	PlayerName          string `json:"playerName"`
 	PlayerPortalID      uint   `json:"playerPortalId,string"`
-	PlayerPortalUserID  string `json:"playerPortalUserId"`
+	PlayerPortalUserID  uint   `json:"playerPortalUserId,string"`
 	RetMsg              string `json:"ret_msg"`
 }
 

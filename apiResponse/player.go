@@ -46,26 +46,26 @@ type Player struct {
 // MergedPlayer stores data related to merged identites of the same Player on different Platforms
 type MergedPlayer struct {
 	MergeDatetime string `json:"merge_datetime"`
-	PlayerID      string `json:"playerId"`
-	PortalID      string `json:"portalId"`
+	PlayerID      uint   `json:"playerId,string"`
+	PortalID      uint   `json:"portalId,string"`
 }
 
 // SearchPlayer stores data related to a searched player
 type SearchPlayer struct {
 	Name         string `json:"Name"`
 	HZPlayerName string `json:"hz_player_name"`
-	PlayerID     string `json:"player_id"`
-	PortalID     string `json:"portal_id"`
+	PlayerID     uint   `json:"player_id,string"`
+	PortalID     uint   `json:"portal_id,string"`
 	PrivacyFlag  string `json:"privacy_flag"`
 	RetMsg       string `json:"ret_msg"`
 }
 
 // Friend stores data related to a Player's Friend
 type Friend struct {
-	AccountID   string `json:"account_id"`
+	AccountID   uint   `json:"account_id,string"`
 	FriendFlags string `json:"friend_flags"`
 	Name        string `json:"name"`
-	PlayerID    string `json:"player_id"`
+	PlayerID    uint   `json:"player_id,string"`
 	PortalID    uint   `json:"portal_id,string"`
 	RetMsg      string `json:"ret_msg"`
 	Status      string `json:"status"`
@@ -79,22 +79,4 @@ type PlayerStatus struct {
 	RetMsg                string `json:"ret_msg"`
 	Status                uint   `json:"status"`
 	StatusString          string `json:"status_string"`
-}
-
-// PlayerStatus stores data related to a Players current Status
-type PlayerQueueStat struct {
-	Assists    uint   `json:"Assists"`
-	Champion   string `json:"Champion"`
-	ChampionID uint   `json:"ChampionId"`
-	Deaths     uint   `json:"Deaths"`
-	Gold       uint   `json:"Gold"`
-	Kills      uint   `json:"Kills"`
-	LastPlayed string `json:"LastPlayed"`
-	Losses     uint   `json:"Losses"`
-	Matches    uint   `json:"Matches"`
-	Minutes    uint   `json:"Minutes"`
-	Queue      string `json:"Queue"`
-	Wins       uint   `json:"Wins"`
-	PlayerID   string `json:"player_id"`
-	RetMsg     string `json:"ret_msg"`
 }
