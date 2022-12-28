@@ -105,6 +105,7 @@ type ActiveMatchDetail struct {
 	PlayerCreated          string `json:"playerCreated"`
 	PlayerID               uint   `json:"playerId,string"`
 	PlayerName             string `json:"playerName"`
+	PlayerPortalID         string `json:"playerPortalId"`
 	PlayerRegion           string `json:"playerRegion"`
 	RetMsg                 string `json:"ret_msg"`
 	TaskForce              uint   `json:"taskForce"`
