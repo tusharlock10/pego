@@ -34,17 +34,18 @@ var RankMapping = map[uint]string{
 }
 
 var QueueMapping = map[uint]string{
-	constants.Unknown:                "Unknown",
-	constants.CasualSiege:            "Casual Siege",
-	constants.TeamDeathmatch:         "Team Deathmatch",
-	constants.Onslaught:              "Onslaught",
-	constants.RankedKeyboard:         "Ranked Keyboard",
-	constants.RankedController:       "Ranked Controller",
-	constants.ShootingRange:          "Shooting Range",
-	constants.TrainingSiege:          "Training Siege",
-	constants.TrainingTeamDeathmatch: "Training Team Deathmatch",
-	constants.TrainingOnslaught:      "Training Onslaught",
-	constants.TestMaps:               "Test Maps",
+	constants.Unknown:           "Unknown",
+	constants.CasualSiege:       "Casual Siege",
+	constants.TeamDeathmatch:    "Team Deathmatch",
+	constants.ChooseAny:         "Choose Any",
+	constants.Onslaught:         "Onslaught",
+	constants.RankedKeyboard:    "Ranked Keyboard",
+	constants.RankedController:  "Ranked Controller",
+	constants.ShootingRange:     "Shooting Range",
+	constants.TrainingSiege:     "Training Siege",
+	constants.TrainingChooseAny: "Training Choose Any",
+	constants.TrainingOnslaught: "Training Onslaught",
+	constants.TestMaps:          "Test Maps",
 }
 
 var PortalMapping = map[uint]string{

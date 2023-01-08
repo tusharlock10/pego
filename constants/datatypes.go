@@ -25,12 +25,14 @@ const (
 	Unknown                = 0
 	CasualSiege            = 424
 	TeamDeathmatch         = 469
+	ChooseAny              = 10296
 	Onslaught              = 452
 	RankedKeyboard         = 486
 	RankedController       = 428
 	ShootingRange          = 434
 	TrainingSiege          = 425
 	TrainingTeamDeathmatch = 470
+	TrainingChooseAny      = 10297
 	TrainingOnslaught      = 453
 	TestMaps               = 445
 )
